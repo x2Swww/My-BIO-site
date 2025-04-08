@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My BIO</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="relative min-h-screen overflow-x-hidden text-white bg-black">
+  <!-- วิดีโอพื้นหลัง -->
+  <video autoplay muted loop playsinline class="fixed z-0 w-full h-full object-cover">
+    <source src="/static/assets/bg.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- เมนู -->
+  <header class="w-full fixed top-0 z-20 bg-black bg-opacity-40 backdrop-blur-md p-4 flex justify-center">
+    <nav class="flex gap-6 text-sm sm:text-base">
+      <a href="/" class="hover:text-pink-400">Main</a>
+      <a href="/about" class="hover:text-pink-400">About</a>
+      <a href="/secret" class="hover:text-pink-400">Secret</a>
+    </nav>
+  </header>
+
+  <!-- Main Section -->
+  <section id="main" class="min-h-screen flex items-center justify-center px-4 pt-24">
+    <div class="glass text-center w-full max-w-sm p-6 sm:p-8 rounded-3xl shadow-lg z-10 fade-in">
+      <div class="relative w-24 h-24 mx-auto mb-4">
+        <img src="/static/assets/bg_blur.jpg" class="absolute w-full h-full object-cover rounded-full blur-md" />
+        <img src="/static/assets/developer.png" class="relative w-full h-full object-cover rounded-full border-2 border-pink-400 shadow-lg" />
+      </div>
+
+      <h1 class="text-2xl font-bold">Andrew</h1>
+      <p class="text-pink-400 mt-1 text-xs">© 2025 Warintorn Thepsenglee, All rights reserved.</p>
+
+      <div class="mt-4 flex justify-center flex-wrap gap-3">
+        <a href="https://www.facebook.com/profile.php?id=61550261541352" target="_blank" class="btn-social bg-blue-600">Facebook</a>
+        <a href="https://devhub.in.th/" target="_blank" class="btn-social bg-purple-600">DevHub</a>
+        <a href="https://github.com/x2Swww" target="_blank" class="btn-social bg-gray-800">GitHub</a>
+      </div>
+
+      <div class="mt-6 text-base bg-black bg-opacity-40 p-4 rounded-xl">
+        <p>🗓 วันเกิด: 06/11/2010</p>
+        <p>📍 วันนี้: <span id="date"></span></p>
+        <p>⏰ เวลาปัจจุบัน: <span id="time"></span></p>
+      </div>
+
+      <div class="mt-4">
+        <p class="text-sm">🎧 กดปุ่มเปิดเพิ่มเล่นเพลง...</p>
+        <div class="flex gap-2 justify-center mt-2 text-xs">
+          <button id="muteBtn" class="bg-pink-500 hover:bg-pink-600 px-3 py-1 rounded-full">🔇 เปิด/ปิดเสียง</button>
+          <button id="volDown" class="bg-pink-500 hover:bg-pink-600 px-3 py-1 rounded-full">➖ ลดเสียง</button>
+          <button id="volUp" class="bg-pink-500 hover:bg-pink-600 px-3 py-1 rounded-full">➕ เพิ่มเสียง</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black bg-opacity-70 py-6 text-center text-sm">
+    <p>© 2025 Warintorn Thepsenglee, All rights reserved.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

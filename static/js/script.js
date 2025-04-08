@@ -17,23 +17,26 @@ audio.loop = true;
 audio.volume = 0.6;
 audio.muted = true;
 
-// เล่นเพลง
 window.addEventListener("load", () => {
-  audio.play().catch((e) => {
-    showToast("ต้องคลิกก่อนถึงจะเล่นเพลงได้ 🎵");
-    console.warn("Autoplay ถูกบล็อก:", e);
+  audio.play().catch(() => {
+
+    const startAudio = () => {
+      audio.muted = false;
+      audio.play().then(() => {
+        console.log("เล่นเพลงสำเร็จหลังคลิกแรก");
+        showToast("🎵 กำลังเล่นเพลงแล้ว");
+      }).catch((e) => {
+        console.warn("ยังเล่นเพลงไม่ได้:", e);
+      });
+
+      document.removeEventListener("click", startAudio);
+      document.removeEventListener("keydown", startAudio);
+    };
+
+    document.addEventListener("click", startAudio);
+    document.addEventListener("keydown", startAudio);
   });
 });
-
-// คลิกหน้าเว็บก่อนค่อยเล่น
-document.addEventListener("click", () => {
-  audio.muted = false;
-  audio.play().then(() => {
-    console.log("เพลงเริ่มเล่นหลังจากคลิกแรก");
-  }).catch((e) => {
-    console.warn("ยังเล่นเพลงไม่ได้:", e);
-  });
-}, { once: true }); // คลิกครั้งเดียวพอ
 
 // ปุ่มควบคุมเสียง
 document.getElementById("muteBtn").onclick = () => {

@@ -17,7 +17,7 @@ def secret():
 @app.route('/song')
 def song():
     # ส่งไฟล์เพลงจาก static/assets
-    return send_from_directory('static/assets', 'song.mp3')
+    return send_from_directory('static/assets', '')
 
 if __name__ == '__main__':
     app.run(debug=True)

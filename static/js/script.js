@@ -14,7 +14,7 @@ updateTime();
 // เพลง (โหลดจาก backend)
 const audio = new Audio('/song');
 audio.loop = true;
-audio.volume = 0.6;
+audio.volume = 0.3;
 audio.muted = true;
 
 // เล่นเพลง
